@@ -17,7 +17,95 @@
         <File Permission="644" Location="Kernel/Config/Files/TTO_Track_BCC_Recipients.xml"/>
     </Filelist>
     <CodeInstall><![CDATA[
+        my $DynamicFieldObject = $Kernel::OM->Get('Kernel::System::DynamicField');
+        my $ID = $DynamicFieldObject->DynamicFieldAdd(
+            InternalField => 1,
+            Name        => 'TrackBCCRecipients',
+            Label       => 'BCC recipients',
+            FieldOrder  => 3,
+            FieldType   => 'TextArea',
+            ObjectType  => 'Article',
+            Config      => {},
+            ValidID     => 1,
+            UserID      => 1,
+        );
+
+        my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+        my $SysConfigObject = $Kernel::OM->Get('Kernel::System::SysConfig');
+        my $AgentTicketZoomConfig = $ConfigObject->Get('Ticket::Frontend::AgentTicketZoom');
+        $AgentTicketZoomConfig->{DynamicField}->{TrackBCCRecipients} = 1;
+        my $AgentTicketComposeConfig = $ConfigObject->Get('Ticket::Frontend::AgentTicketCompose');
+        $AgentTicketComposeConfig->{DynamicField}->{TrackBCCRecipient} = 1;
+        my $AgentTicketEmailConfig = $ConfigObject->Get('Ticket::Frontend::AgentTicketEmail');
+        $AgentTicketEmailConfig->{DynamicField}->{TrackBCCRecipient} = 1;
+    
+        $SysConfigObject->ConfigItemUpdate(
+            Valid        => 1,
+            Key          => 'Ticket::Frontend::AgentTicketZoom',
+            Value        => $AgentTicketZoomConfig,
+            NoValidation => 1,
+        );
+        $SysConfigObject->ConfigItemUpdate(
+            Valid        => 1,
+            Key          => 'Ticket::Frontend::AgentTicketCompose',
+            Value        => $AgentTicketComposeConfig,
+            NoValidation => 1,
+        );
+        $SysConfigObject->ConfigItemUpdate(
+            Valid        => 1,
+            Key          => 'Ticket::Frontend::AgentTicketEmail',
+            Value        => $AgentTicketEmailConfig,
+            NoValidation => 1,
+        );
+
+
     ]]></CodeInstall>
     <CodeUninstall><![CDATA[
+        my $DynamicFieldObject = $Kernel::OM->Get('Kernel::System::DynamicField');
+        my $DynamicFieldConfig = $DynamicFieldObject->DynamicFieldGet(
+            Name => 'TrackBCCRecipients',
+        );
+
+        my $ValuesDeleteSuccess = $Kernel::OM->Get('Kernel::System::DynamicField::Backend')->AllValuesDelete(
+            DynamicFieldConfig => $DynamicFieldConfig,
+            UserID             => 1,
+        );
+
+        my $Success;
+    
+        if ($ValuesDeleteSuccess) {
+            $Success = $DynamicFieldObject->DynamicFieldDelete(
+                ID     => $DynamicFieldConfig->{ID},
+                UserID => 1,
+            );
+        }
+
+        my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+        my $SysConfigObject = $Kernel::OM->Get('Kernel::System::SysConfig');
+        my $AgentTicketZoomConfig = $ConfigObject->Get('Ticket::Frontend::AgentTicketZoom');
+        delete $AgentTicketZoomConfig->{DynamicField}->{TrackBCCRecipients};
+        my $AgentTicketComposeConfig = $ConfigObject->Get('Ticket::Frontend::AgentTicketCompose');
+        delete $AgentTicketComposeConfig->{DynamicField}->{TrackBCCRecipient};
+        my $AgentTicketEmailConfig = $ConfigObject->Get('Ticket::Frontend::AgentTicketEmail');
+        delete $AgentTicketEmailConfig->{DynamicField}->{TrackBCCRecipient};
+    
+        $SysConfigObject->ConfigItemUpdate(
+            Valid        => 1,
+            Key          => 'Ticket::Frontend::AgentTicketZoom',
+            Value        => $AgentTicketZoomConfig,
+            NoValidation => 1,
+        );
+        $SysConfigObject->ConfigItemUpdate(
+            Valid        => 1,
+            Key          => 'Ticket::Frontend::AgentTicketCompose',
+            Value        => $AgentTicketComposeConfig,
+            NoValidation => 1,
+        );
+        $SysConfigObject->ConfigItemUpdate(
+            Valid        => 1,
+            Key          => 'Ticket::Frontend::AgentTicketEmail',
+            Value        => $AgentTicketEmailConfig,
+            NoValidation => 1,
+        );
     ]]></CodeUninstall>
 </otrs_package>
