@@ -13,8 +13,11 @@
     <BuildDate>?</BuildDate>
     <BuildHost>?</BuildHost>
     <Filelist>
-        <File Permission="644" Location="Custom/GAModules/TrackBCCRecipients.pm"/>
         <File Permission="644" Location="Custom/Kernel/Output/HTML/FilterElementPost/TrackBCCRecipients.pm"/>
         <File Permission="644" Location="Kernel/Config/Files/TTO_Track_BCC_Recipients.xml"/>
     </Filelist>
+    <CodeInstall><![CDATA[
+    ]]></CodeInstall>
+    <CodeUninstall><![CDATA[
+    ]]></CodeUninstall>
 </otrs_package>

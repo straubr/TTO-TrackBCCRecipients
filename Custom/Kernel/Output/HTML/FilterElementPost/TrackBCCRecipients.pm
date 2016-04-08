@@ -20,12 +20,11 @@ sub new {
 sub Run {
     my ( $Self, %Param ) = @_;
 
-    # return if not in AgentTicketEmail (should not happen)
-    return if $Param{TemplateFile} !~ /^(AgentTicketEmail)/;
+    # return if not in AgentTicketEmail or compose (should not happen)
+    return if $Param{TemplateFile} !~ /^(AgentTicketEmail|AgentTicketCompose)/;
 
     my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
 
-    my $HookString = "<!--HookStartRichText-->";
     my $JavaScript = << "EOF";
 
   \$('#DynamicField_TrackBCCRecipients').parent().addClass( 'Hidden' );
@@ -44,9 +43,6 @@ EOF
     $LayoutObject->AddJSOnDocumentComplete (
         Code => $JavaScript,
     );
-
-#    ${ $Param{Data} } =~ s/$HookString/$JavaScript\n$HookString/;
-
     return 1;
 }
 
