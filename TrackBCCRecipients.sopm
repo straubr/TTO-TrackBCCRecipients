@@ -35,9 +35,9 @@
         my $AgentTicketZoomConfig = $ConfigObject->Get('Ticket::Frontend::AgentTicketZoom');
         $AgentTicketZoomConfig->{DynamicField}->{TrackBCCRecipients} = 1;
         my $AgentTicketComposeConfig = $ConfigObject->Get('Ticket::Frontend::AgentTicketCompose');
-        $AgentTicketComposeConfig->{DynamicField}->{TrackBCCRecipient} = 1;
+        $AgentTicketComposeConfig->{DynamicField}->{TrackBCCRecipients} = 1;
         my $AgentTicketEmailConfig = $ConfigObject->Get('Ticket::Frontend::AgentTicketEmail');
-        $AgentTicketEmailConfig->{DynamicField}->{TrackBCCRecipient} = 1;
+        $AgentTicketEmailConfig->{DynamicField}->{TrackBCCRecipients} = 1;
     
         $SysConfigObject->ConfigItemUpdate(
             Valid        => 1,
@@ -85,9 +85,9 @@
         my $AgentTicketZoomConfig = $ConfigObject->Get('Ticket::Frontend::AgentTicketZoom');
         delete $AgentTicketZoomConfig->{DynamicField}->{TrackBCCRecipients};
         my $AgentTicketComposeConfig = $ConfigObject->Get('Ticket::Frontend::AgentTicketCompose');
-        delete $AgentTicketComposeConfig->{DynamicField}->{TrackBCCRecipient};
+        delete $AgentTicketComposeConfig->{DynamicField}->{TrackBCCRecipients};
         my $AgentTicketEmailConfig = $ConfigObject->Get('Ticket::Frontend::AgentTicketEmail');
-        delete $AgentTicketEmailConfig->{DynamicField}->{TrackBCCRecipient};
+        delete $AgentTicketEmailConfig->{DynamicField}->{TrackBCCRecipients};
     
         $SysConfigObject->ConfigItemUpdate(
             Valid        => 1,
