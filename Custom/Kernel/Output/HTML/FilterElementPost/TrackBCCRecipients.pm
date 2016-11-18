@@ -32,7 +32,7 @@ sub Run {
 
   \$('#submitRichText').bind('click', function () {
       var allRecipients = '';
-      \$('[id^=BccCustomerKey_]').each(function(){
+      \$('[id^=BccCustomerTicketText_]').each(function(){
         allRecipients = allRecipients + \$(this).val() + ';';
       });
       
