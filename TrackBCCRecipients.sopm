@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <otrs_package version="1.0">
     <Name>TTO Track BCC Recipients</Name>
-    <ChangeLog Version="1.0.2" Date="2016-11-18 16:45:17 UTC+1">All users are now tracked, not only the registered ones</ChangeLog>
-    <ChangeLog Version="1.0.1" Date="2016-04-08 16:05:26 UTC+1">Fixes for the initial release</ChangeLog>
-    <Version>1.0.2</Version>
+    <Version>5.9.8</Version>
+    <ChangeLog Version="???" Date="2015-03-11 10:07:11 +0100">Initial Release for 4.x Framework</ChangeLog>
     <Framework>6.x</Framework>
     <Vendor>TTO GmbH</Vendor>
     <URL>http://www.tto.de/</URL>
     <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
-    <Description Lang="en">This package adds the bcc recipients of outbound mails as dynamicfield-values to the article.</Description>
-    <Description Lang="de">Dieses Paket fügt die BCC-Empfänger von ausgehenden Mails als dynamische Feldwerte an den Artikel an.</Description>
+    <Description Lang="en">This package adds the bcc recipients of outbound mails as an article to the ticket.</Description>
+    <Description Lang="de">Dieses Paket fügt die BCC-Empfänger von ausgehenden Mails als Artikel an da Ticket an.</Description>
     <IntroInstall Type="post" Lang="en" Title="Thank you!">Thank you for choosing this module.</IntroInstall>
     <IntroInstall Type="post" Lang="de" Title="Vielen Dank!">Vielen Dank fuer die Auswahl dieses Modules.</IntroInstall>
     <BuildDate>?</BuildDate>
