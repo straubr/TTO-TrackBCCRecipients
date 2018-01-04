@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <otrs_package version="1.0">
     <Name>TTO Track BCC Recipients</Name>
-    <Version>5.9.8</Version>
-    <ChangeLog Version="???" Date="2015-03-11 10:07:11 +0100">Initial Release for 4.x Framework</ChangeLog>
+    <Version>5.9.9</Version>
     <Framework>6.x</Framework>
+    <ChangeLog Version="1.0.0" Date="2015-03-17 16:34:40 UTC+1">Migration to custom repo</ChangeLog>
     <Vendor>TTO GmbH</Vendor>
     <URL>http://www.tto.de/</URL>
     <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
