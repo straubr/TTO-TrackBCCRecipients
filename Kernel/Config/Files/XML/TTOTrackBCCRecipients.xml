@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<otrs_config version="1.0" init="Application">
-    <ConfigItem Name="Frontend::Output::FilterElementPost###TrackBCCRecipients" Required="0" Valid="1">
+<otrs_config version="2.0" init="Application">
+    <Setting Name="Frontend::Output::FilterElementPost###TrackBCCRecipients" Required="0" Valid="1">
         <Description Translatable="1">Inject Java Script to save the bcc recipients.</Description>
-        <Group>TTO Track BCC Recipients</Group>
-        <SubGroup>Frontend::Agent::ModuleRegistration</SubGroup>
-        <Setting>
+        <Navigation>Frontend::Agent::ModuleRegistration</Navigation>
+        <Value>
             <Hash>
                 <Item Key="Module">Kernel::Output::HTML::FilterElementPost::TrackBCCRecipients</Item>
                 <Item Key="Debug">0</Item>
@@ -15,6 +14,6 @@
                     </Hash>
                 </Item>
             </Hash>
-        </Setting>
-    </ConfigItem>
+        </Value>
+    </Setting>
 </otrs_config>

@@ -1,9 +1,10 @@
+# Copyright:
+# 2015-2018 TTO GmbH, www.tto.de
+
 package Kernel::Output::HTML::FilterElementPost::TrackBCCRecipients;
 
 use strict;
 use warnings;
-
-#use JSON;
 
 our $ObjectManagerDisabled = 1;
 
